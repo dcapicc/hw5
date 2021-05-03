@@ -60,16 +60,22 @@ window.addEventListener('DOMContentLoaded', async function() {
   // Store number of days selected to memory
   let daysPicked = days.value
  
+// days.addEventListener (`change`, async function(event) {
+
 
 // get a reference to the location of the forecast weather display
 let forecastElement = document.querySelector(`.forecast`)
+
 
 // Check to see if the user entered a value for Days
 if (daysPicked > 0) {
 
 // insert HTML for forecast header
 forecastElement.insertAdjacentHTML(`beforeend`, `<div class="text-center space-y-8">
-<div class="font-bold text-3xl">${daysPicked} Day Forecast</div>`)
+<div class="font-bold text-3xl">${daysPicked} Day Forecast</div> <div class="forecast-detail md:flex"></div>`)
+
+// Get a reference to the forecast detail div
+let forecastDetailElement = document.querySelector(`.forecast-detail`)
 
 
 // Run a loop depending on number of days selected
@@ -77,15 +83,44 @@ forecastElement.insertAdjacentHTML(`beforeend`, `<div class="text-center space-y
 for (let i=0; i < daysPicked; i++) {
 let dayForecast = forecast.forecastday[i]
 
-forecastElement.insertAdjacentHTML(`beforeend`,
-`<div class"mx-auto">
-  <img src="https:${dayForecast.day.condition.icon}" >
+forecastDetailElement.insertAdjacentHTML(`beforeend`,
+`<div class="border-2 p-4 m-4 rounded border-blue-500">
+  <img src="https:${dayForecast.day.condition.icon}" class="mx-auto">
   <h1 class="text-2xl text-bold text-gray-500">${dayForecast.date}</h1>
-  <h2 class="text-xl">High ${dayForecast.day.maxtemp_f}° – Low ${dayForecast.day.mintemp_f}°</h2>
-  <h2 class="text-gray-500">${dayForecast.day.condition.text}</h2>
-</div>`
+  <h2 class="text-xl">High ${dayForecast.day.maxtemp_f}°</h2><h2 class="text-xl">Low ${dayForecast.day.mintemp_f}°</h2>
+  <h2 class="text-gray-500">${dayForecast.day.condition.text}</h2></div>
+`
 )
-    }}
+
+
+    }
+  }
+
+// })
+
+
+// // Check to see if the user entered a value for Days
+// if (daysPicked > 0) {
+
+// // insert HTML for forecast header
+// forecastElement.insertAdjacentHTML(`beforeend`, `<div class="text-center space-y-8">
+// <div class="font-bold text-3xl">${daysPicked} Day Forecast</div>`)
+
+
+// // Run a loop depending on number of days selected
+
+// for (let i=0; i < daysPicked; i++) {
+// let dayForecast = forecast.forecastday[i]
+
+// forecastElement.insertAdjacentHTML(`beforeend`,
+// `<div class"mx-auto">
+//   <img src="https:${dayForecast.day.condition.icon}" >
+//   <h1 class="text-2xl text-bold text-gray-500">${dayForecast.date}</h1>
+//   <h2 class="text-xl">High ${dayForecast.day.maxtemp_f}° – Low ${dayForecast.day.mintemp_f}°</h2>
+//   <h2 class="text-gray-500">${dayForecast.day.condition.text}</h2>
+// </div>`
+// )
+//     }}
       
   }
   
