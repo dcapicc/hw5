@@ -31,11 +31,9 @@ window.addEventListener('DOMContentLoaded', async function() {
         // - Fetch the url, wait for a response, store the response in memory
   let response = await fetch(url)
   
-  
      // - Ask for the json-formatted data from the response, wait for the data, store it in memory
         let json = await response.json()
   
-        
     // - Write the json-formatted data to the JavaScript console
         console.log(json)
     // - Store the interpreted location, current weather conditions, the forecast as three separate variables
@@ -59,24 +57,19 @@ window.addEventListener('DOMContentLoaded', async function() {
   let days = document.querySelector(`#days`)
   // Store number of days selected to memory
   let daysPicked = days.value
- 
-// days.addEventListener (`change`, async function(event) {
-
 
 // get a reference to the location of the forecast weather display
 let forecastElement = document.querySelector(`.forecast`)
-
 
 // Check to see if the user entered a value for Days
 if (daysPicked > 0) {
 
 // insert HTML for forecast header
-forecastElement.insertAdjacentHTML(`beforeend`, `<div class="text-center space-y-8">
-<div class="font-bold text-3xl">${daysPicked} Day Forecast</div> <div class="forecast-detail md:flex"></div>`)
+forecastElement.innerHTML = `<div class="text-center space-y-8">
+<div class="font-bold text-3xl">${daysPicked} Day Forecast</div> <div class="forecast-detail md:flex"></div>`
 
 // Get a reference to the forecast detail div
 let forecastDetailElement = document.querySelector(`.forecast-detail`)
-
 
 // Run a loop depending on number of days selected
 
@@ -95,32 +88,6 @@ forecastDetailElement.insertAdjacentHTML(`beforeend`,
 
     }
   }
-
-// })
-
-
-// // Check to see if the user entered a value for Days
-// if (daysPicked > 0) {
-
-// // insert HTML for forecast header
-// forecastElement.insertAdjacentHTML(`beforeend`, `<div class="text-center space-y-8">
-// <div class="font-bold text-3xl">${daysPicked} Day Forecast</div>`)
-
-
-// // Run a loop depending on number of days selected
-
-// for (let i=0; i < daysPicked; i++) {
-// let dayForecast = forecast.forecastday[i]
-
-// forecastElement.insertAdjacentHTML(`beforeend`,
-// `<div class"mx-auto">
-//   <img src="https:${dayForecast.day.condition.icon}" >
-//   <h1 class="text-2xl text-bold text-gray-500">${dayForecast.date}</h1>
-//   <h2 class="text-xl">High ${dayForecast.day.maxtemp_f}° – Low ${dayForecast.day.mintemp_f}°</h2>
-//   <h2 class="text-gray-500">${dayForecast.day.condition.text}</h2>
-// </div>`
-// )
-//     }}
       
   }
   
